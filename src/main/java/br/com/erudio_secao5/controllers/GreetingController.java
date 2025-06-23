@@ -1,8 +1,7 @@
-package br.com.erudio.controllers;
+package br.com.erudio_secao5.controllers;
 
-import br.com.erudio.model.Greeting;
+import br.com.erudio_secao5.model.Greeting;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
