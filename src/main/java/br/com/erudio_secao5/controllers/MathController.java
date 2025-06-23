@@ -14,17 +14,23 @@ public class MathController {
     public Double sum(
             @PathVariable("numberOne") String numberOne,
             @PathVariable("numberTwo") String numberTwo
-    ) throws Exception{
+    ) {
         if(!isNumeric(numberOne) || !isNumeric(numberTwo)) throw new IllegalArgumentException();
         return convertToDouble(numberOne) + convertToDouble(numberTwo);
     }
 
-    private Double convertToDouble(String numberOne) {
-        return 1D;
+    private Double convertToDouble(String strNumber) {
+        if (strNumber == null || strNumber.isEmpty()) throw new IllegalArgumentException();
+        String number = strNumber.replace(",", "."); // R$ 5,00 USD 5.0
+
+        return Double.parseDouble(number);
     }
 
-    private boolean isNumeric(String number) {
-        return true;
+    private boolean isNumeric(String strNumber) {
+        if (strNumber == null || strNumber.isEmpty()) return false;
+        String number = strNumber.replace(",", "."); // R$ 5,00 USD 5.0
+
+        return (number.matches("[-+]?[0-9]*\\.?[0-9]+"));
     }
 
     // http://localhost:8080/math/subtraction/3/5
