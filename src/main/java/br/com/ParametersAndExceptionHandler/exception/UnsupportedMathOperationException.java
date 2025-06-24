@@ -1,4 +1,4 @@
-package br.com.erudio_secao5.exception;
+package br.com.ParametersAndExceptionHandler.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

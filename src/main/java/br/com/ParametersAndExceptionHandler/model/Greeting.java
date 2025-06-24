@@ -1,3 +1,3 @@
-package br.com.erudio_secao5.model;
+package br.com.ParametersAndExceptionHandler.model;
 
 public record Greeting(Long id, String content) {}

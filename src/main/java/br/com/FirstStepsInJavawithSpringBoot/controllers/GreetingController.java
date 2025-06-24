@@ -1,6 +1,6 @@
-package br.com.erudio_secao4.controllers;
+package br.com.FirstStepsInJavawithSpringBoot.controllers;
 
-import br.com.erudio_secao4.model.Greeting;
+import br.com.FirstStepsInJavawithSpringBoot.model.Greeting;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;

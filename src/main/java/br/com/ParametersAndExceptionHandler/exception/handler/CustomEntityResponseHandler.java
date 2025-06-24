@@ -1,7 +1,7 @@
-package br.com.erudio_secao5.exception.handler;
+package br.com.ParametersAndExceptionHandler.exception.handler;
 
-import br.com.erudio_secao5.exception.ExceptionResponse;
-import br.com.erudio_secao5.exception.UnsupportedMathOperationException;
+import br.com.ParametersAndExceptionHandler.exception.ExceptionResponse;
+import br.com.ParametersAndExceptionHandler.exception.UnsupportedMathOperationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

@@ -1,4 +1,4 @@
-package br.com.erudio_secao5.exception;
+package br.com.ParametersAndExceptionHandler.exception;
 
 import java.util.Date;
 
