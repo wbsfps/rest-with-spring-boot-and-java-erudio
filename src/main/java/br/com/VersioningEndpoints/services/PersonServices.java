@@ -3,6 +3,7 @@ package br.com.VersioningEndpoints.services;
 import br.com.VersioningEndpoints.data.dto.v1.PersonDTO;
 import br.com.VersioningEndpoints.data.dto.v2.PersonDTOV2;
 import br.com.VersioningEndpoints.exception.ResourceNotFoundException;
+import br.com.VersioningEndpoints.mapper.custom.PersonMapper;
 import br.com.VersioningEndpoints.model.Person;
 import br.com.VersioningEndpoints.repository.PersonRepository;
 import org.slf4j.Logger;
@@ -24,6 +25,9 @@ public class PersonServices {
     @Autowired
     private PersonRepository repository;
 
+    @Autowired
+    private PersonMapper converter;
+
     public PersonDTO findById(Long id) {
         logger.info("Finding one Person!");
 
@@ -44,10 +48,10 @@ public class PersonServices {
     }
 
     public PersonDTOV2 createV2(PersonDTOV2 person) {
-        logger.info("Creating one person!");
-        var entity = parseObject(person, Person.class);
+        logger.info("Creating one person V2!");
 
-        return parseObject(repository.save(entity), PersonDTOV2.class);
+        var entity = converter.convertDTOToEntity(person);
+        return converter.convertEntityToDTO(repository.save(entity));
     }
 
     public PersonDTO update(PersonDTO person) {
