@@ -10,7 +10,7 @@ import java.util.Date;
 public class PersonMapper {
     public PersonDTOV2 convertEntityToDTO(Person person) {
         PersonDTOV2 dto = new PersonDTOV2();
-
+        dto.setId(person.getId());
         dto.setFirstName(person.getFirstName());
         dto.setLastName(person.getLastName());
         dto.setAddress(person.getAddress());
@@ -22,7 +22,7 @@ public class PersonMapper {
 
     public Person convertDTOToEntity(PersonDTOV2 dto) {
         Person entity = new Person();
-
+        entity.setId(dto.getId());
         entity.setFirstName(dto.getFirstName());
         entity.setLastName(dto.getLastName());
 //        entity.setBirthDay(new Date());
