@@ -1,23 +1,31 @@
 package br.com.CustomSerialization.data.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+//import com.fasterxml.jackson.annotation.JsonIgnore;
+//import com.fasterxml.jackson.annotation.JsonProperty;
+//import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import br.com.CustomSerialization.serializer.GenderSerializer;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
-@JsonPropertyOrder({"id", "address", "first_name", "last_name", "gender"})
+//@JsonPropertyOrder({"id", "address", "first_name", "last_name", "gender"})
 public class PersonDTO implements Serializable {
     private static final long seriaVersionUID = 1L;
 
     private Long id;
-    @JsonProperty("first_name")
+//    @JsonProperty("first_name")
     private String firstName;
-    @JsonProperty("last_name")
+//    @JsonProperty("last_name")
     private String lastName;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private Date birthDay;
     private String address;
-    @JsonIgnore
+//    @JsonIgnore
+    @JsonSerialize(using = GenderSerializer.class)
     private String gender;
 
     public PersonDTO(){}
@@ -70,11 +78,19 @@ public class PersonDTO implements Serializable {
         this.gender = gender;
     }
 
+    public Date getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(Date birthDay) {
+        this.birthDay = birthDay;
+    }
+
     @Override
     public final boolean equals(Object o) {
-        if (!(o instanceof PersonDTO person)) return false;
+        if (!(o instanceof PersonDTO personDTO)) return false;
 
-        return Objects.equals(id, person.id) && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(address, person.address) && Objects.equals(gender, person.gender);
+        return Objects.equals(id, personDTO.id) && Objects.equals(firstName, personDTO.firstName) && Objects.equals(lastName, personDTO.lastName) && Objects.equals(birthDay, personDTO.birthDay) && Objects.equals(address, personDTO.address) && Objects.equals(gender, personDTO.gender);
     }
 
     @Override
@@ -82,6 +98,7 @@ public class PersonDTO implements Serializable {
         int result = Objects.hashCode(id);
         result = 31 * result + Objects.hashCode(firstName);
         result = 31 * result + Objects.hashCode(lastName);
+        result = 31 * result + Objects.hashCode(birthDay);
         result = 31 * result + Objects.hashCode(address);
         result = 31 * result + Objects.hashCode(gender);
         return result;
